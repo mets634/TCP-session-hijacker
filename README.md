@@ -7,3 +7,5 @@ REQUIREMENTS:
 1) UNIX-like operating system.
 2) Python installed.
 3) Scapy installed.
+
+NOTE: This software was developed for educational purposes only. Do not use for malicious purposes.
