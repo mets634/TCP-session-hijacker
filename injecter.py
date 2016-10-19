@@ -11,7 +11,7 @@ page = open(path, 'r') # open file containing html
 html = page.read() # get html
 default_value = 10
 
-def start(times):
+def start():
     print "Listening for http GET requests..."
     
     sniff(prn=inject,
